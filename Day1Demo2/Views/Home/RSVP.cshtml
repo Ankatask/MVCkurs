@@ -1,0 +1,33 @@
+﻿@model Day1Demo2.Models.Guest
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <title>RSVP</title>
+</head>
+<body>
+    <div> 
+        @using(Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            <p>Name: @Html.TextBoxFor(x => x.Name)</p>
+            <p>Email: @Html.TextBox("Email")</p>
+            <p>Phone: @Html.TextBox("Phone")</p>
+            <p>Will you attend?</p>
+            <p>@Html.DropDownListFor(x => x.WillAttend,
+                new [] {
+                    new SelectListItem() {Text ="Yes", Value= bool.TrueString},
+                    new SelectListItem() {Text ="No", Value= bool.FalseString}})
+                </p>
+            <input type="submit" value="Send" />
+        }
+    </div>
+</body>
+</html>
